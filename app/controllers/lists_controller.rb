@@ -26,7 +26,7 @@ class ListsController < ApplicationController
 
   private
    def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :photo)
 
     # rescue ActionController::ParameterMissing => error
     #   json_response({ message: error }, :unprocessable_entity)

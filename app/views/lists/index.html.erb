@@ -1,8 +1,27 @@
-<h1> My Movie Lists</h1>
-<ul>
-<% @lists.each do |list| %>
-<li><%= link_to list.name, list_path(list) %></li>
-<% end  %>
-</ul>
-<%=  link_to 'Create a new list', list_path('new') %>
 
+
+    <h1 class="text-center"> My Movie Lists</h1>
+
+<div class="position-relative">
+  <div class="cards">
+    <% @lists.each do |list| %>
+    <% if list.photo.attached? %>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top rounded" src="<%= cl_image_path list.photo.key, height: 300, width: 400, crop: :fill %>">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to list.name, list_path(list) %></h5>
+      </div>
+    </div>
+    <% else %>
+    <div class="card rounded" style="width: 18rem;">
+      <img class="card-img-top" src="<%= cl_image_path 'mpcbkybwarsywo7znb5z', height: 300, width: 400, crop: :fill %>">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to list.name, list_path(list) %></h5>
+      </div>
+
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+<%=  link_to 'Create a new list', list_path('new') %>
