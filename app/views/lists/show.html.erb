@@ -1,0 +1,28 @@
+<h1>List#show</h1>
+<h2> <%=  @list.name %></h2>
+
+  <div class="row">
+<div class="col-sm-16 d-flex">
+<%  @list.movies.each do |movie| %>
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%= movie.title %></h5>
+    <p class="card-text"><%= movie.overview %> </p>
+    <%  bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+    <a href="#" class="btn btn-primary"><%= link_to "Remove", bookmark_path(bookmark),
+  method: :delete, data: { confirm: "Are you sure?" } %></a>
+  </div>
+</div>
+
+
+<% end %>
+</div>
+</div>
+<br>
+
+<%=  link_to 'Create a new bookmark', new_list_bookmark_path(@list.id) %>
+<br>
+<%= link_to 'Home', lists_path %>
+
