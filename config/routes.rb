@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root :to => 'lists#index'
+  root 'lists#index'
   resources :lists do
     resources :bookmarks, only: [ :new, :create]
   end
