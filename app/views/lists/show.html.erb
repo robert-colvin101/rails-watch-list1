@@ -1,9 +1,4 @@
-<h2 class="text-center"> <%=  @list.name %></h2>
-<% if @list.photo.attached? %>
-<div class="p-2 text-center">
-  <%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>
-</div>
-<% end %>
+<h1 class="text-center text-secondary"> <%=  @list.name %></h1>
 
 <br>
 <div class="cards">
